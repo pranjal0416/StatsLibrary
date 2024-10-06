@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +61,28 @@ public class StatsLib {
         double variance = varianceSum / listOfNumbers.size();
         return Math.sqrt(variance);
     }
+
+    public static BigInteger factorial(int n) {
+        BigInteger result = BigInteger.ONE;
+        for (int i = 2; i <= n; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
+        }
+        return result;
+    }
+
+    public static BigInteger permutations(int n, int k) {
+        BigInteger numerator = factorial(n);
+        BigInteger denominator = factorial(n - k);
+        return numerator.divide(denominator);
+    }
+
+    public static BigInteger combinations(int n, int k) {
+        BigInteger numerator =factorial(n);
+        BigInteger denominator = factorial(k).multiply(factorial(n - k));
+        return numerator.divide(denominator);
+    }
+
+
 
 
 }
