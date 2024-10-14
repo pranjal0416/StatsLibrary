@@ -1,14 +1,18 @@
+
 import java.util.ArrayList;
-
-public class Charmander extends Pokemon{
-
+/**
+ * Bulbasaur is a pokemon
+ * extends pokemon
+ * attacks are leechseed and vine whip
+ */
+public class Bulbasaur extends Pokemon{
     private String attackOne;
     private String attackTwo;
     private ArrayList<Energy> energyPile;
-    public Charmander(){
-        setHp(50);
-        this.attackOne = "Scratch";
-        this.attackTwo = "Ember";
+    public Bulbasaur(){
+        setHp(70);
+        this.attackOne = "Leech Seed";
+        this.attackTwo = "Vine Whip";
         energyPile = new ArrayList<Energy>();
     }
 
@@ -27,8 +31,8 @@ public class Charmander extends Pokemon{
             this.setHp(thisCurrentHp + 20);
 
             target.setHp(resultingHp);
-            System.out.println("Charmander used Leech Seed on " + target.getName() + " dealing 20 damage");
-            System.out.println("Charmander healed 20 hp");
+            System.out.println("Bulbasaur used Leech Seed on " + target.getName() + " dealing 20 damage");
+            System.out.println("Bulbasaur healed 20 hp");
         }
     }
     //vine whip
@@ -42,13 +46,13 @@ public class Charmander extends Pokemon{
             int currentHp = target.getHp();
             int resultingHp = currentHp - 45;
             target.setHp(resultingHp);
-            System.out.println("Charmander used Vine Whip on " + target.getName() + " dealing 45 damage");
+            System.out.println("Bulbasaur used Vine Whip on " + target.getName() + " dealing 45 damage");
         }
     }
 
     @Override
     public String getName(){
-        return "Charmander";
+        return "Bulbasaur";
     }
 
     public void setEnergyPile(Energy energyCard) {
@@ -57,5 +61,3 @@ public class Charmander extends Pokemon{
 
 
 }
-
-

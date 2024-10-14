@@ -33,4 +33,61 @@ public class SetOperations {
         return compList;
     }
 
+    public boolean isIndependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+        if(pAGivenB == pA){
+            return true;
+        }
+        else if(pBGivenA == pB){
+            return true;
+        }
+        else if(pAAndB == pA * pB){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean isDependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+        if(pAGivenB != pA){
+            return true;
+        }
+        else if(pBGivenA != pB){
+            return true;
+        }
+        else if(pAAndB != pA * pB){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public double conditionalProbability(double pAAndB, double pB){
+        double cProb = (pAAndB) / (pB);
+        return cProb;
+    }
+
+    public double independentIntersection(double probA, double probB) {
+        return probA * probB;
+    }
+
+
+    public double dependentIntersection(double probA, double conditionalProbBGivenA) {
+        return probA * conditionalProbBGivenA;
+    }
+
+
+    public double exclusiveUnion(double probA, double probB) {
+        return probA + probB;
+    }
+
+
+    public double nonExclusiveUnion(double probA, double probB, double intersectionProb) {
+        return probA + probB - intersectionProb;
+    }
+
+
+
+
 }

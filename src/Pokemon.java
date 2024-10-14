@@ -8,4 +8,8 @@ public class Pokemon extends Card{
     public void setHP(int hp){
         this.hp = hp;
     }
+
+    public void addEnergy(Energy energyCard) {
+
+    }
 }
