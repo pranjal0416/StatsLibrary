@@ -9,7 +9,7 @@ public class Mewtwo extends Pokemon
     private String attackTwo;
     private String cardName;
     public Mewtwo(){
-        this.setHp(120);
+        this.setHP(120);
         this.attackOne = "Super Psy Bolt";
         this.attackTwo = "Transfer Break";
     }
@@ -20,9 +20,9 @@ public class Mewtwo extends Pokemon
             System.out.println("Not enough energy to perform this attack");
         }
         else{
-            int currentHp = target.getHp();
+            int currentHp = target.getHP();
             int resultingHp = currentHp - 50;
-            target.setHp(resultingHp);
+            target.setHP(resultingHp);
             System.out.println("Mewtwo used Super Psy Bolt on " + target.getName() + " dealing 50 damage!");
         }
     }
@@ -33,9 +33,9 @@ public class Mewtwo extends Pokemon
             System.out.println("Not enough energy to perform this attack");
         }
         else{
-            int currentHp = target.getHp();
+            int currentHp = target.getHP();
             int resultingHp = currentHp - 160;
-            target.setHp(resultingHp);
+            target.setHP(resultingHp);
             System.out.println("Mewtwo used Transfer Break on " + target.getName() + " dealing 160 damage!");
         }
     }

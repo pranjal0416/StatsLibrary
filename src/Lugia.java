@@ -1,51 +1,53 @@
 import java.util.ArrayList;
-/**
- * pikachu is a pokemon
- * attacks are quick attack and electroball
- */
-public class Pikachu extends Pokemon{
+
+public class Lugia extends Pokemon{
     private String attackOne;
     private String attackTwo;
-    private String cardName;
-    public Pikachu(){
-        this.setHP(70);
-        this.attackOne = "Quick Attack";
-        this.attackTwo = "Electroball";
-        this.cardName = "Pikachu";
-
+    private ArrayList<Energy> energyPile;
+    public Lugia(){
+        setHP(130);
+        this.attackOne = "Gust";
+        this.attackTwo = "Energy Loop";
+        energyPile = new ArrayList<Energy>();
     }
 
-    //Quick Attack
+
     public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
+
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
         }
         else{
-            //deal 10 damage
             int currentHp = target.getHP();
-            int resultingHp = currentHp - 10;
+            int resultingHp = currentHp - 30;
             target.setHP(resultingHp);
-            System.out.println("Pikachu used Quick Attack on " + target.getName() + " dealing 10 damage!");
+            System.out.println("Lugia used Gust on " + target.getName() + " dealing 30 damage");
         }
     }
-    //electroball
+
     public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
         }
         else{
-            //deal 60 damage
+
             int currentHp = target.getHP();
-            int resultingHp = currentHp - 60;
+            int resultingHp = currentHp - 120;
             target.setHP(resultingHp);
-            System.out.println("Pikachu used Electroball on " + target.getName() + " dealing 60 damage!");
+            System.out.println("Lugia used Energy Loop on " + target.getName() + " dealing 120 damage");
         }
     }
 
     @Override
     public String getName(){
-        return cardName;
+        return "Lugia";
     }
+
+    public void setEnergyPile(Energy energyCard) {
+        energyPile.add(energyCard);
+    }
+
+
 }

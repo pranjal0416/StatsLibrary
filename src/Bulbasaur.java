@@ -10,7 +10,7 @@ public class Bulbasaur extends Pokemon{
     private String attackTwo;
     private ArrayList<Energy> energyPile;
     public Bulbasaur(){
-        setHp(70);
+        setHP(70);
         this.attackOne = "Leech Seed";
         this.attackTwo = "Vine Whip";
         energyPile = new ArrayList<Energy>();
@@ -24,13 +24,13 @@ public class Bulbasaur extends Pokemon{
             return;
         }
         else{
-            int currentHp = target.getHp();
+            int currentHp = target.getHP();
             int resultingHp = currentHp - 20;
 
-            int thisCurrentHp = this.getHp();
-            this.setHp(thisCurrentHp + 20);
+            int thisCurrentHp = this.getHP();
+            this.setHP(thisCurrentHp + 20);
 
-            target.setHp(resultingHp);
+            target.setHP(resultingHp);
             System.out.println("Bulbasaur used Leech Seed on " + target.getName() + " dealing 20 damage");
             System.out.println("Bulbasaur healed 20 hp");
         }
@@ -43,9 +43,9 @@ public class Bulbasaur extends Pokemon{
         }
         else{
             //deal 45 damage
-            int currentHp = target.getHp();
+            int currentHp = target.getHP();
             int resultingHp = currentHp - 45;
-            target.setHp(resultingHp);
+            target.setHP(resultingHp);
             System.out.println("Bulbasaur used Vine Whip on " + target.getName() + " dealing 45 damage");
         }
     }

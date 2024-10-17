@@ -65,8 +65,8 @@ public class Player
 
     public Trainer randomTrainer(){
         Random rand = new Random();
-        trainerList.add(new EnergyRemoval());
-        trainerList.add(new FightingFuryBelt());
+        trainerList.add(new ProfessorsResearch());
+        trainerList.add(new GustyPickaxe());
         trainerList.add(new GustofWind());
         trainerList.add(new Revive());
         return trainerList.get(rand.nextInt(trainerList.size()));
@@ -78,6 +78,7 @@ public class Player
         pokeList.add(new Bulbasaur());
         pokeList.add(new Charmander());
         pokeList.add(new Mewtwo());
+        pokeList.add(new Lugia());
         return pokeList.get(rand.nextInt(pokeList.size()));
     }
 
@@ -99,7 +100,7 @@ public class Player
     }
 
     public void discardCard(int cardIndex){
-        discardPile.add(hand.get(cardIndex));
+        discardList.add(hand.get(cardIndex));
         hand.remove(cardIndex);
     }
 
@@ -124,7 +125,7 @@ public class Player
         }
         else{
             System.out.println("Bench is full, card is being discarded");
-            discardPile.add(hand.get(cardNumber));
+            discardList.add(hand.get(cardNumber));
         }
     }
 
@@ -154,7 +155,7 @@ public class Player
 
     }
 
-    public void playCard(int cardNumber, Player player){
+    public void playCard(int cardNumber, Player player, Player target){
 
         if (hand.get(cardNumber) instanceof Pokemon){
             addToBench(cardNumber);
@@ -170,7 +171,7 @@ public class Player
 
         else if (hand.get(cardNumber) instanceof Trainer){
 
-            playTrainer(cardNumber, player);
+            playTrainer(cardNumber, player, target);
             System.out.println("Played trainer card");
             System.out.println();
         }
@@ -212,11 +213,11 @@ public class Player
      * @param cardNumber inded of card in hand
      * @param player player playing the card for trainer effects
      */
-    public void playTrainer(int cardNumber, Player player){
+    public void playTrainer(int cardNumber, Player player, Player target){
         //if it is a trainer card, play it
         if (hand.get(cardNumber) instanceof Trainer){
             Trainer trainerCard = (Trainer) hand.get(cardNumber);
-            trainerCard.playable(player);
+            trainerCard.playable(player, target);
             discardCard(cardNumber);
         }
     }
@@ -258,18 +259,18 @@ public class Player
         switch (attackNumber) {
             case 1:
                 activePokemon.attackOne(opponentPokemon, currentPokemon.getEnergyPile());
-                System.out.println("opponent hp: " + opponentPokemon.getHp() + " your hp: " + currentPokemon.getHp());
+                System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
                 break;
             case 2:
                 activePokemon.attackTwo(opponentPokemon, currentPokemon.getEnergyPile());
-                System.out.println("opponent hp: " + opponentPokemon.getHp() + " your hp: " + currentPokemon.getHp());
+                System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
                 break;
             default:
                 System.out.println("Invalid attack number. Please choose 1 or 2.");
                 break;
         }
         //checks fainted pokemon
-        if (opponentPokemon.getHp() <= 0) {
+        if (opponentPokemon.getHP() <= 0) {
             System.out.println("Opponent's Pokemon fainted!");
             opponentDiscardPile.add(opponentActivePile.get(0));
             opponentActivePile.remove(0);
@@ -290,12 +291,12 @@ public class Player
      * prompts player to choose card to play
      * @param player player that is selecting the card
      */
-    public void cardSelection(Player player){
+    public void cardSelection(Player player, Player target){
         // Prompt the player to choose a card to play
         player.printHand();
         System.out.println("Pick a card to play: ");
         int cardNum = scan.nextInt() - 1;
-        playCard(cardNum, player);
+        playCard(cardNum, player, target);
         player.printHand();
 
     }
@@ -370,7 +371,7 @@ public class Player
             scan.nextLine();
 
             if (actionChoice == 1) {
-                cardSelection(player);
+                cardSelection(player,targetPlayer);
             } else if (actionChoice == 2) {
                 if (benchList.size() == 0){
                     System.out.println("No Pokemon in bench to move to active.");

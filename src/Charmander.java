@@ -6,43 +6,40 @@ public class Charmander extends Pokemon{
     private String attackTwo;
     private ArrayList<Energy> energyPile;
     public Charmander(){
-        setHp(50);
+        setHP(50);
         this.attackOne = "Scratch";
         this.attackTwo = "Ember";
         energyPile = new ArrayList<Energy>();
     }
 
-    //leechseed
+    //scratch
     public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
-        //deal 20 damage heal 20
+        //deal 10 damage
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
         }
         else{
-            int currentHp = target.getHp();
+            int currentHp = target.getHP();
             int resultingHp = currentHp - 20;
+            target.setHP(resultingHp);
 
-            int thisCurrentHp = this.getHp();
-            this.setHp(thisCurrentHp + 20);
+            System.out.println("Charmander used Scratch on " + target.getName() + " dealing 10 damage");
 
-            target.setHp(resultingHp);
-            System.out.println("Charmander used Leech Seed on " + target.getName() + " dealing 20 damage");
-            System.out.println("Charmander healed 20 hp");
         }
     }
-    //vine whip
+    //Ember
     public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
         }
         else{
-            //deal 45 damage
-            int currentHp = target.getHp();
-            int resultingHp = currentHp - 45;
-            target.setHp(resultingHp);
-            System.out.println("Charmander used Vine Whip on " + target.getName() + " dealing 45 damage");
+            //deal 30 damage
+            int currentHp = target.getHP();
+            int resultingHp = currentHp - 30;
+            target.setHP(resultingHp);
+            System.out.println("Charmander used Ember on " + target.getName() + " dealing 30 damage");
         }
     }
 
