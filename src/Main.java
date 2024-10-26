@@ -13,9 +13,15 @@ public class Main {
             //prob = Birthday.runProb(31,prob);
         //}
         //System.out.println("Probability is: " + (double) prob/10000);
+        //SetOperations test = new SetOperations();
+
+        //test.testSetOperations();
+
+        //StatsLib test2 = new StatsLib();
+        //test2.runTest();
 
 
-            int reshuffles = 0;
+        int reshuffles = 0;
             int numPokemon = 0;
             for(int j = 1; j < 61; j++) {
                 numPokemon = j;

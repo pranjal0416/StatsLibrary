@@ -32,42 +32,6 @@ public class SetOperations {
         }
         return compList;
     }
-
-    public boolean isIndependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
-        if(pAGivenB == pA){
-            return true;
-        }
-        else if(pBGivenA == pB){
-            return true;
-        }
-        else if(pAAndB == pA * pB){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean isDependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
-        if(pAGivenB != pA){
-            return true;
-        }
-        else if(pBGivenA != pB){
-            return true;
-        }
-        else if(pAAndB != pA * pB){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public double conditionalProbability(double pAAndB, double pB){
-        double cProb = (pAAndB) / (pB);
-        return cProb;
-    }
-
     public double independentIntersection(double probA, double probB) {
         return probA * probB;
     }
@@ -87,6 +51,45 @@ public class SetOperations {
         return probA + probB - intersectionProb;
     }
 
+    public void testSetOperations(){
+
+        ArrayList<Integer> set = new ArrayList<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        set.add(5);
+        set.add(6);
+        set.add(7);
+        set.add(8);
+        set.add(9);
+        set.add(10);
+        set.add(11);
+        set.add(12);
+        set.add(13);
+
+        ArrayList<Integer> subset = new ArrayList<>();
+        subset.add(2);
+        subset.add(4);
+        subset.add(6);
+        subset.add(8);
+
+
+        System.out.println("Union: " + union(set, subset));
+        System.out.println();
+        System.out.println("Intersect: " + intersect(set, subset));
+        System.out.println();
+        System.out.println("Complement: " + complement(set, subset));
+        System.out.println();
+        System.out.println("Independent Intersection: " + independentIntersection(.43,.57));
+        System.out.println();
+        System.out.println("Dependent Intersection: " + dependentIntersection(.43, .57));
+        System.out.println();
+        System.out.println("Exclusive Union: " + exclusiveUnion(.66, .34));
+        System.out.println();
+        System.out.println("NonExclusive Union: " + nonExclusiveUnion(.66, .34, .22));
+        System.out.println();
+    }
 
 
 

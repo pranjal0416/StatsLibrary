@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Player
 {
-    private ArrayList<Card> deck;  //this is the constructors job= new Card[];
+    private ArrayList<Card> deck = new ArrayList<>();
     private ArrayList<Card> hand;
     private ArrayList<Card> prizeList;
     private ArrayList<Card> discardList;
@@ -18,7 +18,7 @@ public class Player
     private Scanner scan = new Scanner(System.in);
 
     public Player(String name) {
-        deck = new ArrayList();
+
         hand = new ArrayList();
         benchList = new ArrayList();
         active = new ArrayList();
@@ -28,21 +28,24 @@ public class Player
         pokeList = new ArrayList();
         energyList = new ArrayList();
         this.name = name;
+        makeDeck();
+
 
     }
 
     public void makeDeck(){
         for(int i = 0; i < 20; i++){
-            deck.add(new Energy());
-            deck.add(randomTrainer());
-            deck.add(randomPokemon());
+            this.deck.add(new Energy());
+            this.deck.add(randomTrainer());
+            this.deck.add(randomPokemon());
         }
+
     }
 
     public void getHand() {
         Random rand = new Random();
         for (int i = 0; i < 7; i++) {
-            int cardToTakeIndex = rand.nextInt(deck.size());
+            int cardToTakeIndex = rand.nextInt(deck.size()+1);
             hand.add(deck.get(cardToTakeIndex));
             deck.remove(cardToTakeIndex);
 
