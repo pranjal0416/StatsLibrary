@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * Represents a Charmander Pokemon, a subclass of the Pokemon class.
+ * Charmander has two attacks, "Scratch" and "Ember", and an initial HP of 50.
+ * It also has an energy pile to store energy cards.
+ */
 public class Charmander extends Pokemon{
 
     private String attackOne;
@@ -13,6 +18,12 @@ public class Charmander extends Pokemon{
     }
 
     //scratch
+    /**
+     * Attacks the target Pokemon using an energy card.
+     *
+     * @param target The Pokemon to be attacked
+     * @param energyPile The pile of energy available for the attack
+     */
     public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
         //deal 10 damage
         if (energyPile.size() < 1){
@@ -29,6 +40,12 @@ public class Charmander extends Pokemon{
         }
     }
     //Ember
+    /**
+     * Performs an attack on the target Pokemon using energy from the energy pile.
+     *
+     * @param target The Pokemon to be attacked
+     * @param energyPile The pile of energy available for the attack
+     */
     public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
@@ -43,26 +60,49 @@ public class Charmander extends Pokemon{
         }
     }
 
+    /**
+     * Returns the name of the Pokemon which is "Charmander".
+     *
+     * @return The name of the Pokemon
+     */
     @Override
     public String getName(){
         return "Charmander";
     }
 
+    /**
+     * Returns the name of the first attack.
+     *
+     * @return The name of the first attack, which is "Scratch".
+     */
     @Override
     public String getAttackOne(){
         return "Scratch";
     }
 
+    /**
+     * Returns the name of the second attack.
+     *
+     * @return The name "Ember".
+     */
     @Override
     public String getAttackTwo(){
         return "Ember";
     }
 
+    /**
+     * Adds an energy card to the energy pile.
+     *
+     * @param energyCard The energy card to add to the energy pile
+     */
     public void setEnergyPile(Energy energyCard) {
         energyPile.add(energyCard);
     }
 
 
 }
+
+
+
 
 

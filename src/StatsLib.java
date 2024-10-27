@@ -3,9 +3,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The StatsLib class provides methods for computing mean, median,
+ * modes, standard deviation, and probability distributions, as well as
+ * methods for determining independence and dependence
+ */
 public class StatsLib {
 
-
+    /**
+     * Computes the mean of a list of integers.
+     *
+     * @param listOfNumbers The list of integers to compute the mean of.
+     * @return The mean of the integers in the list.
+     */
     public double computeMean(ArrayList<Integer> listOfNumbers) {
         int sum = 0;
         for (int singleNumber : listOfNumbers) {
@@ -14,6 +24,12 @@ public class StatsLib {
         return sum / (double) listOfNumbers.size();
     }
 
+    /**
+     * Computes the median of a list of integers.
+     *
+     * @param listOfNumbers The list of integers
+     * @return The median value of the integers in the list.
+     */
     public double computeMedian(ArrayList<Integer> listOfNumbers) {
         double median = 0;
         listOfNumbers.sort(Integer::compareTo);
@@ -26,6 +42,12 @@ public class StatsLib {
         return median;
     }
 
+    /**
+     * Computes the modes of a list of integers.
+     *
+     * @param numbers The list of integers
+     * @return An ArrayList containing the modes of the numbers.
+     */
     public ArrayList<Integer> computeModes(ArrayList<Integer> numbers) {
         Map<Integer, Integer> frequencyMap = new HashMap<>();
         for (Integer number : numbers) {
@@ -49,6 +71,12 @@ public class StatsLib {
         return modes;
     }
 
+    /**
+     * Computes the standard deviation of a list of integers.
+     *
+     * @param listOfNumbers The list of integers to compute the standard deviation of.
+     * @return The standard deviation of the integers in the list.
+     */
     public double standardDeviation(ArrayList<Integer> listOfNumbers) {
         double mean = computeMean(listOfNumbers);
         double varianceSum = 0.0;
@@ -59,6 +87,12 @@ public class StatsLib {
         return Math.sqrt(variance);
     }
 
+    /**
+     * Computes the factorial of a given integer.
+     *
+     * @param n The integer to compute the factorial of.
+     * @return The factorial of n as a BigInteger.
+     */
     public static BigInteger factorial(int n) {
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= n; i++) {
@@ -67,19 +101,43 @@ public class StatsLib {
         return result;
     }
 
+    /**
+     * Computes the number of permutations
+     *
+     * @param n The total number of items.
+     * @param k The number of items to choose.
+     * @return The number of permutations as a BigInteger.
+     */
     public static BigInteger permutations(int n, int k) {
         BigInteger numerator = factorial(n);
         BigInteger denominator = factorial(n - k);
         return numerator.divide(denominator);
     }
 
+    /**
+     * Computes the number of combinations
+     *
+     * @param n The total number of items.
+     * @param k The number of items to choose.
+     * @return The number of combinations as a BigInteger.
+     */
     public static BigInteger combinations(int n, int k) {
         BigInteger numerator = factorial(n);
         BigInteger denominator = factorial(k).multiply(factorial(n - k));
         return numerator.divide(denominator);
     }
 
-    public boolean isIndependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+    /**
+     * Determines if two events are independent based on their probabilities.
+     *
+     * @param pA The probability of event A.
+     * @param pB The probability of event B.
+     * @param pAGivenB The conditional probability of A given B.
+     * @param pBGivenA The conditional probability of B given A.
+     * @param pAAndB The joint probability of A and B.
+     * @return True if the events are independent; otherwise, false.
+     */
+    public boolean isIndependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB) {
         if(pAGivenB == pA){
             return true;
         }
@@ -94,7 +152,17 @@ public class StatsLib {
         }
     }
 
-    public boolean isDependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+    /**
+     * Determines if two events are dependent
+     *
+     * @param pA The probability of event A.
+     * @param pB The probability of event B.
+     * @param pAGivenB The conditional probability of A given B.
+     * @param pBGivenA The conditional probability of B given A.
+     * @param pAAndB The joint probability of A and B.
+     * @return True if the events are dependent
+     */
+    public boolean isDependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB) {
         if(pAGivenB != pA){
             return true;
         }
@@ -109,25 +177,49 @@ public class StatsLib {
         }
     }
 
-    public double conditionalProbability(double pAAndB, double pB){
+    /**
+     * Computes the conditional probability.
+     *
+     * @param pAAndB The joint probability of A and B.
+     * @param pB The marginal probability of B.
+     * @return The conditional probability of A given B.
+     */
+    public double conditionalProbability(double pAAndB, double pB) {
         double cProb = (pAAndB) / (pB);
         return cProb;
     }
 
-
-
+    /**
+     * Computes the binomial probability distribution for parameters.
+     *
+     * @param p The probability of success on a single trial.
+     * @param q The probability of failure on a single trial.
+     * @param n The number of trials.
+     * @param y The number of successes.
+     * @return The binomial probability.
+     */
     public double binomialProbabilityDistribution(double p, double q, int n, int y) {
         double binomial = combinations(n, y).doubleValue() * Math.pow(p, y) * Math.pow(q, n - y);
         return binomial;
     }
 
+    /**
+     * Computes the geometric probability distribution for parameters.
+     *
+     * @param q The probability of failure.
+     * @param p The probability of success.
+     * @param y The number of trials until the first success.
+     * @return The geometric probability.
+     */
     public double geometricProbabilityDistribution(double q, double p, int y) {
         double gD = Math.pow(q, y - 1) * p;
         return gD;
     }
 
+    /**
+     * Runs tests
+     */
     public void runTest() {
-
         ArrayList<Integer> sampleNumbersOdd = new ArrayList<>();
         sampleNumbersOdd.add(1);
         sampleNumbersOdd.add(3);
@@ -180,7 +272,7 @@ public class StatsLib {
         System.out.println("Is the problem independent? " + isIndependent(0.5, 0.5, 0.5, 0.5, 0.25));
         System.out.println("Is the problem dependent? " + isDependent(0.5, 0.5, 0.5, 0.5, 0.25));;
 
-        System.out.println("The conditional probability is " + conditionalProbability(2, 4));
+        System.out.println("The conditional probability is " + conditionalProbability(.2, .4));
 
         System.out.println("The binomial probability distribution is " + binomialProbabilityDistribution(0.8, 0.2, 10, 7));
 

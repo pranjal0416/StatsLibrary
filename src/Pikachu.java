@@ -15,32 +15,44 @@ public class Pikachu extends Pokemon{
 
     }
 
-    //Quick Attack
-    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
-        if (energyPile.size() < 1){
-            System.out.println("Not enough energy to perform this attack");
+
+    /**
+     * Executes Pikachu's Quick Attack on a target Pokemon, reducing its HP by 10.
+     *
+     * @param target     The Pokemon being attacked.
+     * @param energyPile The energy available for the attack.
+     */
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile) {
+        // Check if there is enough energy to perform the attack
+        if (energyPile.size() < 1) {
+            System.out.println("Not enough energy to perform this attack"); // Print message if insufficient energy
             return;
-        }
-        else{
-            //deal 10 damage
-            int currentHp = target.getHP();
-            int resultingHp = currentHp - 10;
-            target.setHP(resultingHp);
-            System.out.println("Pikachu used Quick Attack on " + target.getName() + " dealing 10 damage!");
+        } else {
+            // Deal 10 damage to the target
+            int currentHp = target.getHP(); // Get current HP of the target
+            int resultingHp = currentHp - 10; // Calculate new HP after dealing 10 damage
+            target.setHP(resultingHp); // Update target's HP
+            System.out.println("Pikachu used Quick Attack on " + target.getName() + " dealing 10 damage!"); // Print attack result
         }
     }
-    //electroball
-    public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
-        if (energyPile.size() < 1){
-            System.out.println("Not enough energy to perform this attack");
+
+    /**
+     * Executes Pikachu's Electroball on a target Pokemon, reducing its HP by 60.
+     *
+     * @param target     The Pokemon being attacked.
+     * @param energyPile The energy resources available for the attack.
+     */
+    public void attackTwo(Pokemon target, ArrayList<Energy> energyPile) {
+        // Check if there is enough energy to perform the attack
+        if (energyPile.size() < 1) {
+            System.out.println("Not enough energy to perform this attack"); // Print message if insufficient energy
             return;
-        }
-        else{
-            //deal 60 damage
-            int currentHp = target.getHP();
-            int resultingHp = currentHp - 60;
-            target.setHP(resultingHp);
-            System.out.println("Pikachu used Electroball on " + target.getName() + " dealing 60 damage!");
+        } else {
+            // Deal 60 damage to the target
+            int currentHp = target.getHP(); // Get current HP of the target
+            int resultingHp = currentHp - 60; // Calculate new HP after dealing 60 damage
+            target.setHP(resultingHp); // Update target's HP
+            System.out.println("Pikachu used Electroball on " + target.getName() + " dealing 60 damage!"); // Print attack result
         }
     }
 

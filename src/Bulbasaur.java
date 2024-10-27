@@ -1,10 +1,10 @@
-
 import java.util.ArrayList;
 /**
  * Bulbasaur is a pokemon
  * extends pokemon
  * attacks are leechseed and vine whip
  */
+
 public class Bulbasaur extends Pokemon{
     private String attackOne;
     private String attackTwo;
@@ -17,6 +17,15 @@ public class Bulbasaur extends Pokemon{
     }
 
     //leechseed
+    /**
+     * Performs an attack on a target Pokemon using the Leech Seed move.
+     * If there is not enough energy to perform the attack, a message is printed.
+     * Otherwise, the attack deals 20 damage to the target, and the attacking Pokemon
+     * heals 20 HP.
+     *
+     * @param target The Pokemon being attacked
+     * @param energyPile The list of energy cards available for the attack
+     */
     public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
         //deal 20 damage heal 20
         if (energyPile.size() < 1){
@@ -36,6 +45,13 @@ public class Bulbasaur extends Pokemon{
         }
     }
     //vine whip
+    /**
+     * Performs an attack on a target Pokemon using a specific attack (Vine Whip).
+     * If there is not enough energy to perform the attack, a message is printed.
+     *
+     * @param target The Pokemon to be attacked
+     * @param energyPile The list of energy cards available for the attack
+     */
     public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
@@ -50,6 +66,9 @@ public class Bulbasaur extends Pokemon{
         }
     }
 
+    /**
+     * Getters for name, attack one, and attack two
+     */
     @Override
     public String getName(){
         return "Bulbasaur";
@@ -65,6 +84,9 @@ public class Bulbasaur extends Pokemon{
         return "Vine Whip";
     }
 
+    /**
+     * Setter for adding energy card to energy pile
+     */
     public void setEnergyPile(Energy energyCard) {
         energyPile.add(energyCard);
     }

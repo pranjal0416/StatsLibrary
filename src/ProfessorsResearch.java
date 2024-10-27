@@ -5,6 +5,14 @@ import java.util.ArrayList;
 public class ProfessorsResearch extends Trainer {
     public ProfessorsResearch(){
     }
+
+    /**
+     * Executes the playable action of Professors research, allowing the player to
+     * discard their hand and draw 7 new cards from the deck
+     *
+     * @param player The player using the card.
+     * @param target The target player
+     */
     @Override
     public void playable(Player player, Player target){
         ArrayList<Card> deck = player.getDeck();
