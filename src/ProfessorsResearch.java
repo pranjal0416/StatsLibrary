@@ -11,10 +11,7 @@ public class ProfessorsResearch extends Trainer {
         ArrayList<Card> hand = player.returnHand();
         ArrayList<Card> discard = player.getDiscardPile();;
         hand.clear();
-        for(int i = 0; i < 7; i++){
-            hand.add(deck.get(0));
-            deck.remove(0);
-        }
+        player.getHand();
         System.out.println("Professor's Research has been played");
         System.out.println(player.getName() + " has discarded their hand and drawn 7 cards from their deck.");
 

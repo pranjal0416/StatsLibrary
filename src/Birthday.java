@@ -29,4 +29,13 @@ public class Birthday {
         return prob;
 
         }
+
+        public static void returnProb(){
+            int prob = 0;
+            for(int i = 0; i < 10000; i++){
+                prob = runProb(31,prob);
+            }
+            System.out.println("Probability is: " + (double) prob/10000);
+
+        }
 }

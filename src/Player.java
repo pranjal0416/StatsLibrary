@@ -28,6 +28,15 @@ public class Player
         pokeList = new ArrayList();
         energyList = new ArrayList();
         this.name = name;
+        trainerList.add(new ProfessorsResearch());
+        trainerList.add(new GustyPickaxe());
+        trainerList.add(new GustofWind());
+        trainerList.add(new Revive());
+        pokeList.add(new Pikachu());
+        pokeList.add(new Bulbasaur());
+        pokeList.add(new Charmander());
+        pokeList.add(new Mewtwo());
+        pokeList.add(new Lugia());
         makeDeck();
 
 
@@ -35,17 +44,18 @@ public class Player
 
     public void makeDeck(){
         for(int i = 0; i < 20; i++){
-            this.deck.add(new Energy());
-            this.deck.add(randomTrainer());
-            this.deck.add(randomPokemon());
+            deck.add(new Energy());
+            deck.add(randomTrainer());
+            deck.add(randomPokemon());
         }
+        Collections.shuffle(deck);
 
     }
 
     public void getHand() {
         Random rand = new Random();
         for (int i = 0; i < 7; i++) {
-            int cardToTakeIndex = rand.nextInt(deck.size()+1);
+            int cardToTakeIndex = rand.nextInt(deck.size());
             hand.add(deck.get(cardToTakeIndex));
             deck.remove(cardToTakeIndex);
 
@@ -62,26 +72,16 @@ public class Player
         return false;
     }
 
-    public void shuffle(){
-        Collections.shuffle(deck);
-    }
 
     public Trainer randomTrainer(){
         Random rand = new Random();
-        trainerList.add(new ProfessorsResearch());
-        trainerList.add(new GustyPickaxe());
-        trainerList.add(new GustofWind());
-        trainerList.add(new Revive());
+
         return trainerList.get(rand.nextInt(trainerList.size()));
     }
 
     public Pokemon randomPokemon(){
         Random rand = new Random();
-        pokeList.add(new Pikachu());
-        pokeList.add(new Bulbasaur());
-        pokeList.add(new Charmander());
-        pokeList.add(new Mewtwo());
-        pokeList.add(new Lugia());
+
         return pokeList.get(rand.nextInt(pokeList.size()));
     }
 
