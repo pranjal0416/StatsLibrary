@@ -156,6 +156,7 @@ public class StatsLib {
         sampleNumbersMode.add(9);
         sampleNumbersMode.add(8);
         sampleNumbersMode.add(3);
+
         double mean = computeMean(sampleNumbersOdd);
         System.out.println("The Mean is " + mean);
 
@@ -168,26 +169,23 @@ public class StatsLib {
         answerMode = computeModes(sampleNumbersMode);
         System.out.println("The Mode is " + answerMode.get(0));
 
-
         double standardDeviationPop = standardDeviation(sampleNumbersEven);
         System.out.println("The standard deviation of the Population is " + standardDeviationPop);
 
-        System.out.println("the BigInt factorial is: " + factorial(9));
+        System.out.println("the factorial is: " + factorial(9));
 
         System.out.println("The number of permutations is " + permutations(10, 3));
         System.out.println("The number of combinations is " + combinations(10, 3));
 
         System.out.println("Is the problem independent? " + isIndependent(0.5, 0.5, 0.5, 0.5, 0.25));
-        System.out.println("Is the problem dependent? " + isDependent(0.5, 0.5, 0.5, 0.5, 0.25));
-        System.out.println();
+        System.out.println("Is the problem dependent? " + isDependent(0.5, 0.5, 0.5, 0.5, 0.25));;
 
         System.out.println("The conditional probability is " + conditionalProbability(2, 4));
 
         System.out.println("The binomial probability distribution is " + binomialProbabilityDistribution(0.8, 0.2, 10, 7));
-        System.out.println();
 
         System.out.println("The geometric probability distribution is " + geometricProbabilityDistribution(0.8, 0.2, 5));
-        System.out.println();
+
 
     }
 }

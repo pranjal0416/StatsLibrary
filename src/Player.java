@@ -31,7 +31,7 @@ public class Player
         trainerList.add(new ProfessorsResearch());
         trainerList.add(new GustyPickaxe());
         trainerList.add(new GustofWind());
-        trainerList.add(new Revive());
+        trainerList.add(new NestBall());
         pokeList.add(new Pikachu());
         pokeList.add(new Bulbasaur());
         pokeList.add(new Charmander());
@@ -53,6 +53,7 @@ public class Player
     }
 
     public void getHand() {
+        boolean checked = true;
         Random rand = new Random();
         for (int i = 0; i < 7; i++) {
             int cardToTakeIndex = rand.nextInt(deck.size());
@@ -60,6 +61,14 @@ public class Player
             deck.remove(cardToTakeIndex);
 
         }
+        checked = checkHand();
+        if(checked == false){
+            hand.clear();
+            deck.clear();
+            makeDeck();
+            getHand();
+        }
+
     }
 
     public boolean checkHand(){
@@ -311,10 +320,14 @@ public class Player
      * @param targetPlayer player who is the opponent
      */
     public void attackPhase(Player player, Player targetPlayer){
+        String attackOneStr = player.active.get(0).getAttackOne();
+        String attackTwoStr = player.active.get(0).getAttackTwo();
+
+
         // Prompt the player to choose the attack
         System.out.println("Pick an attack:");
-        System.out.println("1: Attack One");
-        System.out.println("2: Attack Two");
+        System.out.println("1: Attack One: " + attackOneStr);
+        System.out.println("2: Attack Two: " + attackTwoStr);
 
         int attackNumber = scan.nextInt();
         scan.nextLine(); // Consume newline character

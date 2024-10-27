@@ -35,7 +35,7 @@ public class Birthday {
             for(int i = 0; i < 10000; i++){
                 prob = runProb(31,prob);
             }
-            System.out.println("Probability is: " + (double) prob/10000);
+            System.out.println("Probability is: " + (double) prob/10000 + " to have the same birthday");
 
         }
 }

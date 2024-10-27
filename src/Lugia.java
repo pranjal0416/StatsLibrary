@@ -45,6 +45,16 @@ public class Lugia extends Pokemon{
         return "Lugia";
     }
 
+    @Override
+    public String getAttackOne(){
+        return "Gust";
+    }
+
+    @Override
+    public String getAttackTwo(){
+        return "Energy Loop";
+    }
+
     public void setEnergyPile(Energy energyCard) {
         energyPile.add(energyCard);
     }

@@ -48,6 +48,16 @@ public class Charmander extends Pokemon{
         return "Charmander";
     }
 
+    @Override
+    public String getAttackOne(){
+        return "Scratch";
+    }
+
+    @Override
+    public String getAttackTwo(){
+        return "Ember";
+    }
+
     public void setEnergyPile(Energy energyCard) {
         energyPile.add(energyCard);
     }

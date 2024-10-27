@@ -48,4 +48,14 @@ public class Pikachu extends Pokemon{
     public String getName(){
         return cardName;
     }
+
+    @Override
+    public String getAttackOne(){
+        return "Quick Attack";
+    }
+
+    @Override
+    public String getAttackTwo(){
+        return "Electroball";
+    }
 }

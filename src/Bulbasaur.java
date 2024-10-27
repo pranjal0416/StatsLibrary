@@ -55,6 +55,16 @@ public class Bulbasaur extends Pokemon{
         return "Bulbasaur";
     }
 
+    @Override
+    public String getAttackOne(){
+        return "Leech Seed";
+    }
+
+    @Override
+    public String getAttackTwo(){
+        return "Vine Whip";
+    }
+
     public void setEnergyPile(Energy energyCard) {
         energyPile.add(energyCard);
     }

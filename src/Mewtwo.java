@@ -44,4 +44,13 @@ public class Mewtwo extends Pokemon
     public String getName(){
         return "Mewtwo";
     }
+    @Override
+    public String getAttackOne(){
+        return "Super Psy Bolt";
+    }
+
+    @Override
+    public String getAttackTwo(){
+        return "Transfer Break";
+    }
 }
