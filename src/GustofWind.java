@@ -25,8 +25,13 @@ public class GustofWind extends Trainer{
      */
     @Override
     public void playable(Player player, Player target) {
-        target.benchToActive(0);
-        System.out.println("Gust of Wind has been played");
-        System.out.println(player.getName() + " has switched opponent's active card with a bench card");
+        if(!target.getBenchPile().isEmpty()) {
+            target.benchToActive(0);
+            System.out.println("Gust of Wind has been played");
+            System.out.println(player.getName() + " has switched opponent's active card with a bench card");
+        }
+        else{
+            System.out.println("Opponent's bench is empty Gust of Wind can't be played");
+        }
     }
 }

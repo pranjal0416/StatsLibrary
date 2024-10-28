@@ -316,11 +316,11 @@ public class Player {
         switch (attackNumber) {
             case 1:
                 activePokemon.attackOne(opponentPokemon, currentPokemon.getEnergyPile());
-                System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
+                //System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
                 break;
             case 2:
                 activePokemon.attackTwo(opponentPokemon, currentPokemon.getEnergyPile());
-                System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
+                //System.out.println("opponent hp: " + opponentPokemon.getHP() + " your hp: " + currentPokemon.getHP());
                 break;
             default:
                 System.out.println("Invalid attack number. Please choose 1 or 2.");

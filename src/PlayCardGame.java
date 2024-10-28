@@ -82,12 +82,7 @@ public class PlayCardGame {
         System.out.println();
     }
 
-    /**
-     * prints the card stats of current player
-     * @param player player with current turn
-     */
-    public void printCardStats(Player player){
-    }
+
 
     /**
      * checks the prize pile of both players. if zero the game wins
